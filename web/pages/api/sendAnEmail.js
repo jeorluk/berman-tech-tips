@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 
 export default async (req, res) => {
-  const SEND_TO = 'jorluk@randsol.com'
+  const SEND_TO = process.env.CONTACT_ADDRESS 
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
