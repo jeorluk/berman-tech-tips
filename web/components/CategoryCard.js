@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import RenderIcon from '../Icons/RenderIcon'
 import Link from 'next/link'
+import { useSession } from 'next-auth/client'
 
 const CardStyles = styled.div`
   padding: 0.25rem;
@@ -60,6 +61,7 @@ const CardStyles = styled.div`
 `
 
 const CategoryCard = ({ posts, category }) => {
+  const [session] = useSession()
   return (
     <CardStyles>
       <div className='card-title'>
@@ -72,6 +74,7 @@ const CategoryCard = ({ posts, category }) => {
             <Link href={`/tips/${post.slug.current}`}>
               <a>{post.title}</a>
             </Link>
+            {!session && post.protectedPage && <span>Locked!</span>}
           </li>
         ))}
       </ul>
