@@ -2,11 +2,12 @@ import React, { useEffect, useContext, useState } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { FilterContext } from '../context/filterContext'
-const PostsContainer = styled.ul`
-  border-top: 2px solid var(--accent-dark);
-`
+import { useSession } from 'next-auth/client'
+import RenderIcon from '../Icons/RenderIcon'
+const PostsContainer = styled.ul``
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, categoryList }) => {
+  const [session] = useSession()
   const { activeFilters, setActiveFilters } = useContext(FilterContext)
   const [filteredPosts, setFilteredPosts] = useState(posts)
 
@@ -25,17 +26,25 @@ const PostList = ({ posts }) => {
       setFilteredPosts(posts)
     }
   }, [posts, activeFilters])
+
   return (
     <PostsContainer>
-      {filteredPosts.map((post) => {
+      {categoryList.map((category) => (
+        <h2>
+          <RenderIcon iconName={category.icon} />
+          {category.title}
+        </h2>
+      ))}
+      {/* {filteredPosts.map((post) => {
         return (
           <li key={post._id}>
             <Link href={`/tips/${post.slug.current}`}>
               <a>{post.title}</a>
             </Link>
+            {!session && post.protectedPage && <span>Locked!</span>}
           </li>
         )
-      })}
+      })} */}
     </PostsContainer>
   )
 }

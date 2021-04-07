@@ -9,11 +9,19 @@ const GlobalStyle = createGlobalStyle`
 
   --accent-dark: hsl(19, 88%, 55%);
   --accent-mid: hsl(19, 88%, 65%);
-  --accent-light: hsl(19, 88%, 75%);
+  --accent-light: hsl(19, 100%, 90%);
+
+  --neutral-dark:hsl(220,10%,80%); 
+  --neutral-mid:hsl(220,10%,90%);
+  --neutral-light:hsl(220,5%,100%);
+
 
   --text-light: hsl(220, 60%, 95%);
   --text-mid: hsl(220, 40%, 70%);
   --text-dark: hsl(220,60%,20%);
+
+  /* Box Shadow */
+  --bs: 0 3px 6px rgba(0,0,0,.7);
 
   /* Break Points */
   --tablet-break: 800px;
@@ -61,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
 html {
   font-size: 100%;
   box-sizing: border-box;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 *, *:before, *:after {
   box-sizing: border-box;
@@ -70,15 +78,18 @@ body {
   /* position: relative; */
 min-height: 100vh; 
   width: 100%;
-  background: var(--main-mid);
+  background: var(--neutral-light);
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+}
+
+body,input,textarea{
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   line-height: var(--line-height);
-}
 
+}
 
 a {
   color: inherit;
@@ -92,17 +103,26 @@ button {
 }
 
 p {margin-bottom: 1rem;}
-h1, h2, h3, h4, h5{
+h1{
+  margin: 0;
   color: var(--accent-dark);
+  background: var(--main-dark);
+  padding: .5rem 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+h2, h3, h4, h5{
   margin: 2.75rem 0 1.05rem;
-  font-family: 'Rock Salt', cursive;
+  color: var(--main-dark);
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   line-height: 1.3;
-  /* line-height: 1.15; */
 }
 
 .accent_text {
-  font-family: 'Rock Salt', cursive;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--size-up-two);
   text-align: center;
 }
 h1, .text_hero {
@@ -115,7 +135,7 @@ h2{
   font-size: var(--size-up-four);}
 h3, .text_extra_large {font-size: var(--size-up-three);}
 h4 {font-size: var(--size-up-two);}
-h5,input,.text_large {font-size: var(--size-up-one);}
+h5,input,textarea,.text_large {font-size: var(--size-up-one);}
 small, .text_small {font-size: var(--size-down-one);}
 `
 export default GlobalStyle

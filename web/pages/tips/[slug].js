@@ -1,22 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import client from '../../client'
 import { groq } from 'next-sanity'
 import Page from '../../components/Page'
 import BlockContent from '@sanity/block-content-to-react'
+import LoginGate from '../../components/LoginGate'
+import { useSession } from 'next-auth/client'
+import Post from '../../components/Post'
+const query = groq`*[_type == "post" && slug.current == $slug][0]{
+ ...,
+//  "body": body[]->,
+ "categories": categories[]-> 
+  }`
+const pageQuery = async (slug) => {
+  const pageQueryResult = await client.fetch(query, { slug })
+  // const pageData = await client.fetch(query, { slug })
+  return pageQueryResult
+}
 
-const Tip = ({ post }) => {
-  const { title, categories, _updatedAt } = post
-  const date = new Date(_updatedAt)
-  console.log(post)
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  condition ? wrapper(children) : children
 
+const Tip = ({ protectedPage, post, slug }) => {
+  //Initialize state from props
+  const [postState, setPostState] = useState(post)
+  const [session] = useSession()
+
+  useEffect(async () => {
+    if (session && protectedPage) {
+      const { protectedPage, ...post } = await pageQuery(slug)
+      setPostState(post)
+    }
+  }, [session, protectedPage])
   return (
     <Page>
-      <h1>{title}</h1>
-      <p>Updated: {new Intl.DateTimeFormat('en-US').format(date)}</p>
-      {categories.map((category) => (
-        <span key={category._id}>{category.title},</span>
-      ))}
+      <h1>{postState.title}</h1>
+      {/*Show the LoginGate if the page is protected */}
+      <ConditionalWrapper
+        condition={protectedPage}
+        wrapper={(children) => (
+          <LoginGate message='access this article'>{children}</LoginGate>
+        )}
+      >
+        <Post post={postState} />
+      </ConditionalWrapper>
     </Page>
   )
 }
@@ -32,17 +59,21 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-export async function getStaticProps({ params }) {
-  const query = groq`*[_type == "post" && slug.current == $slug][0]{
- ...,
-//  "body": body[]->,
- "categories": categories[]-> 
-  }`
+export async function getStaticProps(props) {
+  const { params } = props
   const { slug = '' } = params
-  const post = await client.fetch(query, { slug })
+  // const { protectedPage, ...post } = await client.fetch(query, { slug })
+  const { protectedPage = false, ...post } = await pageQuery(slug)
 
+  //If the page is protected, send post without body
+  if (protectedPage) {
+    return {
+      props: { protectedPage, slug, post: { title: post.title } },
+    }
+  }
+  //Otherwise return post details
   return {
-    props: { post },
+    props: { protectedPage, post },
   }
 }
 

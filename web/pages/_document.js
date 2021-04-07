@@ -35,9 +35,9 @@ export default class CustomDocument extends Document {
         <Head>
           <link rel='preconnect' href='https://fonts.gstatic.com' />
           <link
-            href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Rock+Salt&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Rock+Salt&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap'
             rel='stylesheet'
-          ></link>
+          />
         </Head>
         <body>
           <Main />

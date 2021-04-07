@@ -18,6 +18,11 @@ export default {
       },
     },
     {
+      name: 'protectedPage',
+      title: 'Protected',
+      type: 'boolean',
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',

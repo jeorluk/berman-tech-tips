@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSession, signIn, signOut } from 'next-auth/client'
 import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/client'
+import useModal from '../hooks/useModal'
+import SuggestTopicForm from './Forms/SuggestTopicForm'
+import HelpForm from './Forms/HelpForm'
+import WifiForm from './Forms/WifiForm'
 
 const NavStyles = styled.nav`
   display: flex;
@@ -22,7 +26,7 @@ const NavStyles = styled.nav`
     margin-left: auto;
     padding: 0;
     color: var(--text-light);
-    font-size: var(--size-up-two);
+    font-size: var(--size-up-one);
   }
   li:only-child {
     width: 100%;
@@ -34,11 +38,27 @@ const NavStyles = styled.nav`
 
   button {
     background: var(--main-dark);
+    display: inline-block;
+  }
+
+  button:after {
+    margin: auto;
+    content: '';
+    display: block;
+    background: var(--text-light);
+    height: 2px;
+    width: 0;
+    transition: width 0.3s;
+  }
+  button:hover:after {
+    width: 100%;
   }
 `
 
 const Nav = () => {
   const [session] = useSession()
+  // const { setIsVisible, setComponent } = useContext(ModalContext)
+  const { setIsVisible, setComponent } = useModal()
 
   function handleSignin(e) {
     e.preventDefault()
@@ -56,16 +76,34 @@ const Nav = () => {
         {session ? (
           <>
             <li>
-              <div className='item-inner'>
-                <Link href='/'>
-                  <a className='item-inner'>Suggest a Topic</a>
-                </Link>
-              </div>
+              <button
+                onClick={(e) => {
+                  setComponent(<WifiForm />)
+                  setIsVisible(true)
+                }}
+              >
+                WiFi
+              </button>
             </li>
             <li>
-              <Link href='/gethelp'>
-                <a>Get Help</a>
-              </Link>
+              <button
+                onClick={(e) => {
+                  setComponent(<SuggestTopicForm />)
+                  setIsVisible(true)
+                }}
+              >
+                Suggest a Topic
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={(e) => {
+                  setComponent(<HelpForm />)
+                  setIsVisible(true)
+                }}
+              >
+                Get Help
+              </button>
             </li>
             <li>
               <button onClick={handleSignout}>Log Out</button>

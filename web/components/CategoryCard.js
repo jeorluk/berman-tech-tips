@@ -1,53 +1,81 @@
 import React from 'react'
 import styled from 'styled-components'
 import RenderIcon from '../Icons/RenderIcon'
-import { motion } from 'framer-motion'
+import Link from 'next/link'
 
-const CategoryCardStyles = styled(motion.div)`
-  display: flex;
-  align-items: center;
+const CardStyles = styled.div`
+  padding: 0.25rem;
+  /* height: 400px;
+  width: 400px; */
+  min-width: 300px;
+  max-width: 100vw;
+  border-radius: 5px;
+  border: 1px solid var(--main-dark);
+  background: var(--neutral-light);
+  box-shadow: var(--bs);
 
-  padding: 2px;
-  border: ${(props) =>
-    props.selected ? '2px solid var(--accent-dark)' : 'none'};
-  border-radius: 20px;
-  color: ${(props) =>
-    props.selected ? 'var(--accent-dark)' : 'var(--text-light)'};
-  font-weight: normal;
+  h2 {
+    margin: 0;
+    line-height: 50px;
+    vertical-align: middle;
+  }
 
   svg {
+    /* display: inline-block; */
     height: 45px;
     width: 45px;
-    margin: 0 0.25rem;
+    margin: 0.25rem auto;
   }
 
   path {
-    fill: ${(props) =>
-      props.selected ? 'var(--accent-dark)' : 'var(--text-light)'};
+    fill: var(--main-dark);
   }
 
-  :hover {
-    color: var(--accent-dark);
-    path {
-      fill: var(--accent-dark);
-    }
+  .card-title {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: auto 1fr;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0.5rem;
+  }
+
+  a {
+    display: inline-block;
+  }
+  a:after {
+    margin: auto;
+    content: '';
+    display: block;
+    background: var(--accent-dark);
+    height: 2px;
+    width: 0;
+    transition: width 0.3s;
+  }
+  a:hover:after {
+    width: 100%;
   }
 `
-const CategoryCard = ({ category, selected, setActiveFilters }) => {
-  const { _id, title, icon } = category
+
+const CategoryCard = ({ posts, category }) => {
   return (
-    <CategoryCardStyles
-      selected={selected}
-      whileHover={{
-        scale: 1.1,
-      }}
-      onClick={() => {
-        setActiveFilters([_id])
-      }}
-    >
-      <RenderIcon iconName={icon} />
-      {title}
-    </CategoryCardStyles>
+    <CardStyles>
+      <div className='card-title'>
+        <RenderIcon iconName={category.icon} />
+        <h2 className='text_extra_large'>{category.title}</h2>
+      </div>
+      <ul>
+        {posts.map((post) => (
+          <li key={post._id}>
+            <Link href={`/tips/${post.slug.current}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </CardStyles>
   )
 }
 

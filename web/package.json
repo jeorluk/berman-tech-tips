@@ -11,16 +11,19 @@
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^2.0.9",
     "@svgr/webpack": "^5.5.0",
-    "framer-motion": "^3.2.2-rc.1",
+    "formik": "^2.2.6",
+    "framer-motion": "^3.10.6",
     "google-auth-library": "^6.1.6",
     "googleapis": "^67.0.0",
-    "next": "10.0.1",
+    "next": "^10.1.2",
     "next-auth": "^3.1.0",
     "next-sanity": "^0.1.8",
     "nodemailer": "^6.4.17",
-    "react": "17.0.1",
+    "react": "^17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "swr": "^0.5.5",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1"

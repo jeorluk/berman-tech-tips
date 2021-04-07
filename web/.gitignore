@@ -36,3 +36,7 @@ yarn-error.log*
 #Google API
 Berman Tech Tips-*.json
 ornate-compass*
+
+#Files to remove
+old
+old/*

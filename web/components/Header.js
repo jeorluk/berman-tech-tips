@@ -28,7 +28,9 @@ const Header = () => {
     <HeaderStyles>
       <div className='logo'>
         <Link href='/'>
-          <BTechnical />
+          <a>
+            <BTechnical />
+          </a>
         </Link>
       </div>
       <Nav />

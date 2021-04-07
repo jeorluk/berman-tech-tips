@@ -2,24 +2,22 @@ import Head from 'next/head'
 import { groq } from 'next-sanity'
 import client from '../client'
 import Page from '../components/Page'
-import CategorySelector from '../components/CategorySelector'
 import PostList from '../components/PostList'
-import TopTips from '../components/TopTips'
 import styled from 'styled-components'
 import { useSession } from 'next-auth/client'
+import CategoryCard from '../components/CategoryCard'
+import CategoryCardHolder from '../styles/CategoryCardHolder'
+import getFilteredPosts from '../util/getFilteredPosts'
 
 const MainContent = styled.div`
   width: 100%;
   display: grid;
-  h1 {
-    padding-top: 1rem;
-  }
 
   .intro {
     margin: auto;
     max-width: 800px;
     border-radius: 5px;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
     ul {
       list-style: none;
       padding-left: 0.75rem;
@@ -29,10 +27,8 @@ const MainContent = styled.div`
       padding-bottom: 0.25rem;
     }
 
-    em {
-      color: var(--text-light);
-      font-weight: bold;
-      /* padding: 0.25rem; */
+    strong {
+      color: var(--accent-dark);
     }
   }
 `
@@ -41,7 +37,6 @@ const Home = ({ posts, categoryList }) => {
   return (
     <Page>
       <MainContent>
-        {/* <TopTips /> */}
         <h1> Berman Tech Tips</h1>
         <div className='intro '>
           <p className='accent_text'>Having trouble? We're here to help! </p>
@@ -53,24 +48,23 @@ const Home = ({ posts, categoryList }) => {
           </p>
           <ul>
             <li>
-              <em>Mythical Beings:</em> Dybbuk, gremlins
+              <strong>Mythical Beings:</strong> Dybbuk, gremlins
             </li>
             <li>
-              <em>Astronomy: </em> full moon, solar flares, Is Mercury in
-              retrograde?
+              <strong>Astronomy: </strong> full moon, solar flares, Is Mercury
+              in retrograde?
             </li>
             <li>
-              <em>Personal Troubles: </em> computers don't like me, waking up on
-              the wrong side of the bed
+              <strong>Personal Troubles: </strong> computers don't like me,
+              waking up on the wrong side of the bed
             </li>
           </ul>
           <p>
             But there's good news! Technology can be made to work, and
-            <em>You Can Do It!</em> Whether you're here because problems have
-            happened, or because you want to prevent them, there's something
-            here for you. You'll find a listing of all of our
-            <em> help topics below</em>, and there's a
-            <em> handy category selector</em> to help you find what you need.
+            <strong> You Can Do It!</strong> Whether problems have already
+            happened, or you want to <strong>be ready</strong> when they do,
+            there's something here for you. You'll find a listing of all of our
+            <strong> help topics below</strong>.
           </p>
           {session && (
             <>
@@ -91,8 +85,18 @@ const Home = ({ posts, categoryList }) => {
             </p>
           )}
         </div>
-        <CategorySelector categoryList={categoryList} />
-        <PostList posts={posts} />
+        <CategoryCardHolder>
+          {categoryList.map((category) => (
+            <CategoryCard
+              posts={getFilteredPosts({
+                categoryId: category._id,
+                postList: posts,
+              })}
+              category={category}
+              key={category._id}
+            />
+          ))}
+        </CategoryCardHolder>
       </MainContent>
     </Page>
   )
@@ -102,7 +106,9 @@ export async function getStaticProps() {
   const postQuery = groq`*[_type == "post"] | order(_updatedAt desc){
     title,
     slug,
+    protectedPage,
     _updatedAt,
+    _id,
  "categories": categories[]-> 
 }`
 

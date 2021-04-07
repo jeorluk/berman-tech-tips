@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Footer from './Footer'
 import Header from './Header'
+import Modal from './Modal'
 
 const PageStyles = styled.div`
   min-height: 100vh;
@@ -33,6 +34,7 @@ const Main = styled.main`
 const Page = ({ children }) => {
   return (
     <PageStyles>
+      <Modal />
       <Header />
       <Main>{children}</Main>
       <Footer />
