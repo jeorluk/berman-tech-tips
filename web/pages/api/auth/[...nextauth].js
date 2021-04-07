@@ -32,6 +32,7 @@ async function isUserStaff(email) {
 
   auth.authorize((err) => {
     if (err) {
+      console.log(process.env.GOOGLE_ID)
       console.log(err)
     }
   })
