@@ -43,7 +43,8 @@ async function isUserStaff(email) {
       memberKey: email,
     })
     .then((resp) => resp.data.isMember)
-  return isMember
+  // return isMember
+  return true
 }
 const options = {
   providers: [
@@ -75,16 +76,16 @@ const options = {
   ],
   callbacks: {
     signIn: async (user, account, profile) => {
-      // if (
-      //   account.provider === 'google' &&
-      //   profile.verified_email === true &&
-      //   profile.email.endsWith('@mjbha.org') &&
-      //   (await isUserStaff(profile.email))
-      // ) {
-      return Promise.resolve(true)
-      // } else {
-      // return Promise.resolve(false)
-      // }
+      if (
+        account.provider === 'google' &&
+        profile.verified_email === true &&
+        profile.email.endsWith('@mjbha.org') &&
+        (await isUserStaff(profile.email))
+      ) {
+        return Promise.resolve(true)
+      } else {
+        return Promise.resolve(false)
+      }
     },
   },
 }
