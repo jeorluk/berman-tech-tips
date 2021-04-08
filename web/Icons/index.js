@@ -6,6 +6,7 @@ import SmartBoard from './SmartBoard.svg'
 import Zoom from './Zoom.svg'
 import BTechnical from './BTechnical.svg'
 import Splat from './Splat.svg'
+import Lock from './Lock.svg'
 
 export {
   Wifi,
@@ -16,4 +17,5 @@ export {
   Zoom,
   BTechnical,
   Splat,
+  Lock,
 }

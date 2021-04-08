@@ -76,7 +76,7 @@ const CategoryCard = ({ posts, category }) => {
             </Link>
             {!session && post.protectedPage && (
               <span>
-                <strong>Locked!</strong>
+                <RenderIcon iconName='Lock' />
               </span>
             )}
           </li>
