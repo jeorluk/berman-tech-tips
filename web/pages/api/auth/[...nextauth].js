@@ -81,10 +81,10 @@ const options = {
       //   profile.email.endsWith('@mjbha.org') &&
       //   (await isUserStaff(profile.email))
       // ) {
-        return Promise.resolve(true)
+      return Promise.resolve(true)
       // } else {
-        // return Promise.resolve(false)
-      }
+      // return Promise.resolve(false)
+      // }
     },
   },
 }
