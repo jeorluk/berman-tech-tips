@@ -44,6 +44,7 @@ async function isUserStaff(email) {
       memberKey: email,
     })
     .then((resp) => resp.data.isMember)
+  console.log(`IsMember: ${isMember}`)
   return isMember
 }
 const options = {
@@ -84,6 +85,8 @@ const options = {
       ) {
         return Promise.resolve(true)
       } else {
+        console.log({ profile })
+        console.log('Returning promise false')
         return Promise.resolve(false)
       }
     },
