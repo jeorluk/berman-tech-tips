@@ -3,6 +3,9 @@ import Providers from 'next-auth/providers'
 
 async function isUserStaff(email) {
   const { google } = require('googleapis')
+  const { privateKey } = JSON.parse(
+    process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
+  )
   const config = {
     type: 'service_account',
     project_id: process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID,
@@ -43,9 +46,9 @@ async function isUserStaff(email) {
       memberKey: email,
     })
     .then((resp) => resp.data.isMember)
-  // return isMember
-  return true
+  return isMember
 }
+
 const options = {
   providers: [
     Providers.Google({
