@@ -20,16 +20,17 @@ const CardStyles = styled.div`
     line-height: 50px;
     vertical-align: middle;
   }
+  .category-icon {
+    svg {
+      /* display: inline-block; */
+      height: 45px;
+      width: 45px;
+      margin: 0.25rem auto;
+    }
 
-  svg {
-    /* display: inline-block; */
-    height: 45px;
-    width: 45px;
-    margin: 0.25rem auto;
-  }
-
-  path {
-    fill: var(--main-dark);
+    path {
+      fill: var(--main-dark);
+    }
   }
 
   .card-title {
@@ -58,6 +59,18 @@ const CardStyles = styled.div`
   a:hover:after {
     width: 100%;
   }
+
+  .lock {
+    display: inline-flex;
+    svg {
+      padding-top: 5px;
+      height: 20px;
+      width: 20px;
+    }
+    path {
+      fill: var(--main-dark);
+    }
+  }
 `
 
 const CategoryCard = ({ posts, category }) => {
@@ -65,7 +78,9 @@ const CategoryCard = ({ posts, category }) => {
   return (
     <CardStyles>
       <div className='card-title'>
-        <RenderIcon iconName={category.icon} />
+        <div className='category-icon'>
+          <RenderIcon iconName={category.icon} />
+        </div>
         <h2 className='text_extra_large'>{category.title}</h2>
       </div>
       <ul>
@@ -76,7 +91,9 @@ const CategoryCard = ({ posts, category }) => {
             </Link>
             {!session && post.protectedPage && (
               <span>
-                <RenderIcon iconName='Lock' />
+                <div className='lock'>
+                  <RenderIcon iconName='Lock' />
+                </div>
               </span>
             )}
           </li>
