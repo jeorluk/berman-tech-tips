@@ -32,7 +32,6 @@ async function isUserStaff(email) {
 
   auth.authorize((err) => {
     if (err) {
-      console.log(process.env.GOOGLE_ID)
       console.log(err)
     }
   })
@@ -44,7 +43,6 @@ async function isUserStaff(email) {
       memberKey: email,
     })
     .then((resp) => resp.data.isMember)
-  console.log(`IsMember: ${isMember}`)
   return isMember
 }
 const options = {
@@ -77,17 +75,15 @@ const options = {
   ],
   callbacks: {
     signIn: async (user, account, profile) => {
-      if (
-        account.provider === 'google' &&
-        profile.verified_email === true &&
-        profile.email.endsWith('@mjbha.org') &&
-        (await isUserStaff(profile.email))
-      ) {
+      // if (
+      //   account.provider === 'google' &&
+      //   profile.verified_email === true &&
+      //   profile.email.endsWith('@mjbha.org') &&
+      //   (await isUserStaff(profile.email))
+      // ) {
         return Promise.resolve(true)
-      } else {
-        console.log({ profile })
-        console.log('Returning promise false')
-        return Promise.resolve(false)
+      // } else {
+        // return Promise.resolve(false)
       }
     },
   },
