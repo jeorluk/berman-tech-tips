@@ -80,8 +80,10 @@ const Home = ({ posts, categoryList }) => {
           )}
           {!session && (
             <p>
-              Log in with your Berman account for full access to all the help
-              topics and to be able suggest topics and ask for help.
+              <strong>
+                Log in with your Berman account for full access to all the help
+                topics and to be able suggest topics and ask for help.
+              </strong>
             </p>
           )}
         </div>

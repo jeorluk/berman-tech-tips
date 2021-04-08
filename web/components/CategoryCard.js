@@ -74,7 +74,11 @@ const CategoryCard = ({ posts, category }) => {
             <Link href={`/tips/${post.slug.current}`}>
               <a>{post.title}</a>
             </Link>
-            {!session && post.protectedPage && <span>Locked!</span>}
+            {!session && post.protectedPage && (
+              <span>
+                <strong>Locked!</strong>
+              </span>
+            )}
           </li>
         ))}
       </ul>
