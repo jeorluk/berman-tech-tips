@@ -6,11 +6,12 @@ async function isUserStaff(email) {
   const { privateKey } = JSON.parse(
     process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
   )
+  console.log(privateKey)
   const config = {
     type: 'service_account',
     project_id: process.env.GOOGLE_SERVICE_ACCOUNT_PROJECT_ID,
     private_key_id: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY_ID,
-    private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY,
+    private_key: privateKey,
     client_email: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL,
     client_id: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_ID,
     auth_uri: 'https://accounts.google.com/o/oauth2/auth',
