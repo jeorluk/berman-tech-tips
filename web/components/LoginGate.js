@@ -6,6 +6,7 @@ const LoginGateStyles = styled.div`
   width: 100vw;
   max-width: 700px;
   background: var(--accent-dark);
+  color: var(--text-light);
 
   margin: auto;
   -webkit-clip-path: url(#splat);

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react'
+import Link from 'next/link'
 
 const BlockRenderer = (props) => {
   const { style = 'normal' } = props.node
@@ -10,6 +11,17 @@ const BlockRenderer = (props) => {
   }
 
   return BlockContent.defaultSerializers.types.block(props)
+}
+
+const internalLink = (props) => {
+  console.log({ props })
+  return (
+    <Link href='/tips/[slug]' as={`/tips/${props.mark.slug.current}`}>
+      <a>
+        <strong>{props.children}</strong>
+      </a>
+    </Link>
+  )
 }
 
 const PostStyles = styled.div`
@@ -53,6 +65,10 @@ const PostStyles = styled.div`
       color: var(--accent-dark);
     }
   }
+
+  strong {
+    color: var(--accent-dark);
+  }
 `
 
 const Post = ({ post }) => {
@@ -64,7 +80,10 @@ const Post = ({ post }) => {
           projectId='ezgk3b8g'
           dataset='production'
           blocks={post.body}
-          serializers={{ types: { block: BlockRenderer } }}
+          serializers={{
+            types: { block: BlockRenderer },
+            marks: { internalLink },
+          }}
         />
       )}
       <hr />

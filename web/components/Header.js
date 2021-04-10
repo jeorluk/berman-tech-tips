@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Nav from './Nav'
-import { BTechnical } from '../Icons'
+import { BermanLogo } from '../Icons'
 import Link from 'next/link'
 
 const HeaderStyles = styled.header`
@@ -29,7 +29,7 @@ const Header = () => {
       <div className='logo'>
         <Link href='/'>
           <a>
-            <BTechnical />
+            <BermanLogo />
           </a>
         </Link>
       </div>

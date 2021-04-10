@@ -4,7 +4,7 @@ import Owl from './Owl.svg'
 import DockingStation from './DockingStation.svg'
 import SmartBoard from './SmartBoard.svg'
 import Zoom from './Zoom.svg'
-import BTechnical from './BTechnical.svg'
+import BermanLogo from './BermanLogo.svg'
 import Splat from './Splat.svg'
 import Lock from './Lock.svg'
 
@@ -15,7 +15,7 @@ export {
   DockingStation,
   SmartBoard,
   Zoom,
-  BTechnical,
+  BermanLogo,
   Splat,
   Lock,
 }

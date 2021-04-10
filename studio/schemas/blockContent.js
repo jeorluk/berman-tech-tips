@@ -54,6 +54,26 @@ export default {
                 type: 'url',
               },
             ],
+            blockEditor: {
+              icon: () => '🌎',
+            },
+          },
+          {
+            title: 'Internal Link',
+            name: 'internalLink',
+            type: 'object',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                description: 'Locate a post you want to link to',
+                to: [{ type: 'post' }],
+              },
+            ],
+            blockEditor: {
+              icon: () => '🔗',
+            },
           },
         ],
       },

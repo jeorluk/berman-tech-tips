@@ -8,8 +8,17 @@ import LoginGate from '../../components/LoginGate'
 import { useSession } from 'next-auth/client'
 import Post from '../../components/Post'
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
- ...,
-//  "body": body[]->,
+  ...,
+  body[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+
+      "slug": @.reference->slug
+      }
+    },
+  },
  "categories": categories[]-> 
   }`
 const pageQuery = async (slug) => {
@@ -31,7 +40,7 @@ const Tip = ({ protectedPage, post, slug }) => {
       const { protectedPage, ...post } = await pageQuery(slug)
       setPostState(post)
     }
-  }, [session, protectedPage])
+  }, [session, protectedPage, post])
   return (
     <Page>
       <h1>{postState.title}</h1>
