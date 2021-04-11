@@ -75,6 +75,23 @@ export default {
               icon: () => '🔗',
             },
           },
+          {
+            title: 'Form Link',
+            name: 'formLink',
+            type: 'object',
+            fields: [
+              {
+                name: 'formType',
+                type: 'string',
+                title: 'Form Type',
+                description: 'What form do you want?',
+                to: [{ type: 'post' }],
+              },
+            ],
+            blockEditor: {
+              icon: () => '🗒️',
+            },
+          },
         ],
       },
     },

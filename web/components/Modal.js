@@ -6,7 +6,8 @@ import Button from '../styles/Button'
 
 const ModalStyles = styled(motion.div)`
   padding: 2rem;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   min-height: 100vh;
   width: 100vw;
   z-index: 1000;

@@ -23,7 +23,6 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   }`
 const pageQuery = async (slug) => {
   const pageQueryResult = await client.fetch(query, { slug })
-  // const pageData = await client.fetch(query, { slug })
   return pageQueryResult
 }
 

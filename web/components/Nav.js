@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/client'
 import useModal from '../hooks/useModal'
-import SuggestTopicForm from './Forms/SuggestTopicForm'
-import HelpForm from './Forms/HelpForm'
-import WifiForm from './Forms/WifiForm'
+import RenderForm from './Forms/RenderForm'
+// import SuggestTopicForm from './Forms/SuggestTopicForm'
+// import HelpForm from './Forms/HelpForm'
+// import WifiForm from './Forms/WifiForm'
 
 const NavStyles = styled.nav`
   display: flex;
@@ -57,7 +58,6 @@ const NavStyles = styled.nav`
 
 const Nav = () => {
   const [session] = useSession()
-  // const { setIsVisible, setComponent } = useContext(ModalContext)
   const { setIsVisible, setComponent } = useModal()
 
   function handleSignin(e) {
@@ -78,7 +78,8 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  setComponent(<WifiForm />)
+                  // setComponent(<WifiForm />)
+                  setComponent(<RenderForm formName='WifiForm' />)
                   setIsVisible(true)
                 }}
               >
@@ -88,7 +89,8 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  setComponent(<SuggestTopicForm />)
+                  // setComponent(<SuggestTopicForm />)
+                  setComponent(<RenderForm formName='SuggestTopicForm' />)
                   setIsVisible(true)
                 }}
               >
@@ -98,7 +100,8 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  setComponent(<HelpForm />)
+                  // setComponent(<HelpForm />)
+                  setComponent(<RenderForm formName='HelpForm' />)
                   setIsVisible(true)
                 }}
               >

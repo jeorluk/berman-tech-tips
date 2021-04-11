@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react'
 import Link from 'next/link'
+import useModal from '../hooks/useModal'
+import RenderForm from './Forms/RenderForm'
 
 const BlockRenderer = (props) => {
   const { style = 'normal' } = props.node
@@ -13,8 +15,21 @@ const BlockRenderer = (props) => {
   return BlockContent.defaultSerializers.types.block(props)
 }
 
+const formLink = (props) => {
+  console.log(props)
+  const { setIsVisible, setComponent } = useModal()
+  return (
+    <button
+      onClick={() => {
+        setIsVisible(true)
+        setComponent(<RenderForm formName={props.mark.formType} />)
+      }}
+    >
+      {props.children}
+    </button>
+  )
+}
 const internalLink = (props) => {
-  console.log({ props })
   return (
     <Link href='/tips/[slug]' as={`/tips/${props.mark.slug.current}`}>
       <a>
@@ -36,8 +51,9 @@ const PostStyles = styled.div`
   }
 
   .note {
-    max-width: 75%;
-    margin: 0.5rem 5rem;
+    /* max-width: 75%; */
+    max-width: 800px;
+    margin: 0.5rem auto;
     /* margin-bottom: 0.25rem; */
     position: relative;
     padding-left: 5rem;
@@ -69,10 +85,18 @@ const PostStyles = styled.div`
   strong {
     color: var(--accent-dark);
   }
+
+  button {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    color var(--accent-dark);
+    font-weight: bold;
+    background: inherit;
+  }
 `
 
 const Post = ({ post }) => {
-  console.log({ post })
   return (
     <PostStyles>
       {post.body && (
@@ -82,7 +106,7 @@ const Post = ({ post }) => {
           blocks={post.body}
           serializers={{
             types: { block: BlockRenderer },
-            marks: { internalLink },
+            marks: { internalLink, formLink },
           }}
         />
       )}
