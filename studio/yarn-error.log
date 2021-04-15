@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/lib/node_modules/@sanity/cli/vendor/yarn remove sanity-plugin-vercel-deploy --json --non-interactive --ignore-engines --registry https://registry.npmjs.org
+  /usr/bin/node /usr/lib/node_modules/@sanity/cli/vendor/yarn add sanity-plugin-vision --json --non-interactive --ignore-engines --registry https://registry.npmjs.org
 
 PATH: 
   /home/jim/dev/berman-tech-tips/studio/node_modules/.bin:/home/jim/dev/berman-tech-tips/node_modules/.bin:/home/jim/dev/node_modules/.bin:/home/jim/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/bin:/usr/lib/node_modules/vendor:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -39,7 +39,7 @@ npm manifest:
       "@sanity/default-layout": "^2.7.1",
       "@sanity/default-login": "^2.7.0",
       "@sanity/desk-tool": "^2.7.1",
-      "@sanity/vision": "^2.7.0",
+      "@sanity/vision": "^2.8.0",
       "prop-types": "^15.6",
       "react": "^16.2",
       "react-dom": "^16.2"
@@ -922,11 +922,22 @@ Lockfile:
     version "2.9.1"
     resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.9.1.tgz#7f554e7368c9ab679a11f4a042ca17149d70cf12"
   
+  "@popperjs/core@^2.9.2":
+    version "2.9.2"
+    resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
+  
   "@reach/auto-id@^0.13.2":
     version "0.13.2"
     resolved "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.13.2.tgz#6c7fe7142285707b0f38b2f556f32accb467df32"
     dependencies:
       "@reach/utils" "0.13.2"
+      tslib "^2.1.0"
+  
+  "@reach/auto-id@^0.15.0":
+    version "0.15.0"
+    resolved "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.15.0.tgz#f46afebfc140b2099b95c7aec1f049d167d3833d"
+    dependencies:
+      "@reach/utils" "0.15.0"
       tslib "^2.1.0"
   
   "@reach/utils@0.13.2":
@@ -936,6 +947,13 @@ Lockfile:
       "@types/warning" "^3.0.0"
       tslib "^2.1.0"
       warning "^4.0.3"
+  
+  "@reach/utils@0.15.0":
+    version "0.15.0"
+    resolved "https://registry.npmjs.org/@reach/utils/-/utils-0.15.0.tgz#5b183d668f9bb900b2dec7a33c028a2a828d27b2"
+    dependencies:
+      tiny-warning "^1.0.3"
+      tslib "^2.1.0"
   
   "@rexxars/eventsource-polyfill@^1.0.0":
     version "1.0.0"
@@ -1032,6 +1050,10 @@ Lockfile:
   "@sanity/color@^2.0.14":
     version "2.0.14"
     resolved "https://registry.npmjs.org/@sanity/color/-/color-2.0.14.tgz#c8b06ea191ff4c343f5874de77e2fccdc288b7ce"
+  
+  "@sanity/color@^2.0.15":
+    version "2.0.15"
+    resolved "https://registry.npmjs.org/@sanity/color/-/color-2.0.15.tgz#8eca79a13cae491f2321c29cf978e35f53e54d7f"
   
   "@sanity/components@^2.2.6":
     version "2.2.6"
@@ -1280,6 +1302,10 @@ Lockfile:
     version "1.0.5"
     resolved "https://registry.npmjs.org/@sanity/icons/-/icons-1.0.5.tgz#e00fb474f48e57b90bd169e668c37422d6dae3b0"
   
+  "@sanity/icons@^1.0.6":
+    version "1.0.6"
+    resolved "https://registry.npmjs.org/@sanity/icons/-/icons-1.0.6.tgz#ae9e9f79b17f8b48304c930e527f05e5138cba99"
+  
   "@sanity/image-url@^0.140.19":
     version "0.140.22"
     resolved "https://registry.npmjs.org/@sanity/image-url/-/image-url-0.140.22.tgz#7a65f56bb751f7b1c5dfacfadd34ee10fc4f0fde"
@@ -1490,6 +1516,21 @@ Lockfile:
       "@types/react" "^17.0.0"
       rxjs "^6.5.3"
   
+  "@sanity/ui@^0.33.12":
+    version "0.33.15"
+    resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.33.15.tgz#fc1d7dc9a8c65e450c02fd9255e87c7cba60a039"
+    dependencies:
+      "@juggle/resize-observer" "^3.3.0"
+      "@popperjs/core" "^2.9.2"
+      "@reach/auto-id" "^0.15.0"
+      "@sanity/color" "^2.0.15"
+      "@sanity/icons" "^1.0.6"
+      framer-motion "^4.1.3"
+      popper-max-size-modifier "^0.2.0"
+      react-is "^17.0.2"
+      react-popper "^2.2.5"
+      react-refractor "^2.1.4"
+  
   "@sanity/ui@^0.33.9":
     version "0.33.10"
     resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.33.10.tgz#d67185d2de1fc5c3286646a6392b524b4cc85d87"
@@ -1532,12 +1573,12 @@ Lockfile:
       es6-error "^4.0.2"
       type-of-is "^3.5.1"
   
-  "@sanity/vision@^2.7.0":
-    version "2.7.0"
-    resolved "https://registry.npmjs.org/@sanity/vision/-/vision-2.7.0.tgz#763216358fc5ace72d36216e3d1bf872f138978c"
+  "@sanity/vision@^2.8.0":
+    version "2.8.0"
+    resolved "https://registry.npmjs.org/@sanity/vision/-/vision-2.8.0.tgz#7b412e75dd52a438363779346982d8d1c173bb8b"
     dependencies:
       "@sanity/icons" "^1.0.5"
-      "@sanity/ui" "^0.33.9"
+      "@sanity/ui" "^0.33.12"
       classnames "^2.2.5"
       codemirror "^5.47.0"
       moment "^2.19.1"
@@ -1944,12 +1985,6 @@ Lockfile:
   aws4@^1.8.0:
     version "1.11.0"
     resolved "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
-  
-  axios@^0.21.1:
-    version "0.21.1"
-    resolved "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
-    dependencies:
-      follow-redirects "^1.10.0"
   
   babel-code-frame@^6.26.0:
     version "6.26.0"
@@ -3890,7 +3925,7 @@ Lockfile:
     dependencies:
       tslib "^1.9.3"
   
-  follow-redirects@^1.10.0, follow-redirects@^1.2.4:
+  follow-redirects@^1.2.4:
     version "1.13.3"
     resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
   
@@ -3946,9 +3981,27 @@ Lockfile:
     optionalDependencies:
       "@emotion/is-prop-valid" "^0.8.2"
   
+  framer-motion@^4.1.3:
+    version "4.1.3"
+    resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-4.1.3.tgz#fdde56885910f516233233073f8f0ed6aab6492e"
+    dependencies:
+      framesync "5.3.0"
+      hey-listen "^1.0.8"
+      popmotion "9.3.5"
+      style-value-types "4.1.4"
+      tslib "^2.1.0"
+    optionalDependencies:
+      "@emotion/is-prop-valid" "^0.8.2"
+  
   framesync@5.2.0:
     version "5.2.0"
     resolved "https://registry.npmjs.org/framesync/-/framesync-5.2.0.tgz#f14480654cd05a6af4c72c9890cad93556841643"
+  
+  framesync@5.3.0:
+    version "5.3.0"
+    resolved "https://registry.npmjs.org/framesync/-/framesync-5.3.0.tgz#0ecfc955e8f5a6ddc8fdb0cc024070947e1a0d9b"
+    dependencies:
+      tslib "^2.1.0"
   
   fresh@0.5.2:
     version "0.5.2"
@@ -5503,7 +5556,7 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.npmjs.org/nano-pubsub/-/nano-pubsub-2.0.0.tgz#de291f170ce54ea3e3b39f0b53296d322cd9c540"
   
-  nanoid@^3.1.12, nanoid@^3.1.20, nanoid@^3.1.9:
+  nanoid@^3.1.12, nanoid@^3.1.9:
     version "3.1.22"
     resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   
@@ -6047,6 +6100,15 @@ Lockfile:
       hey-listen "^1.0.8"
       style-value-types "4.1.1"
       tslib "^1.10.0"
+  
+  popmotion@9.3.5:
+    version "9.3.5"
+    resolved "https://registry.npmjs.org/popmotion/-/popmotion-9.3.5.tgz#e821aff3424a021b0f2c93922db31c55cfe64149"
+    dependencies:
+      framesync "5.3.0"
+      hey-listen "^1.0.8"
+      style-value-types "4.1.4"
+      tslib "^2.1.0"
   
   popper-max-size-modifier@^0.2.0:
     version "0.2.0"
@@ -6946,7 +7008,7 @@ Lockfile:
     version "16.13.1"
     resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   
-  react-is@^17.0.1:
+  react-is@^17.0.1, react-is@^17.0.2:
     version "17.0.2"
     resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   
@@ -6982,11 +7044,7 @@ Lockfile:
       prop-types "^15.6.2"
       resize-observer-polyfill "^1.5.0"
   
-  react-polling@^1.0.9:
-    version "1.0.9"
-    resolved "https://registry.npmjs.org/react-polling/-/react-polling-1.0.9.tgz#f1101a1d88bd90a647ace969b6731ab19326029b"
-  
-  react-popper@^2.2.4:
+  react-popper@^2.2.4, react-popper@^2.2.5:
     version "2.2.5"
     resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.2.5.tgz#1214ef3cec86330a171671a4fbcbeeb65ee58e96"
     dependencies:
@@ -7417,16 +7475,6 @@ Lockfile:
     resolved "https://registry.npmjs.org/sanity-diff-patch/-/sanity-diff-patch-1.0.9.tgz#fb1fa3b52c27d369878af57ba02fee779b3ca8bd"
     dependencies:
       diff-match-patch "^1.0.5"
-  
-  sanity-plugin-vercel-deploy@^1.1.0:
-    version "1.1.0"
-    resolved "https://registry.npmjs.org/sanity-plugin-vercel-deploy/-/sanity-plugin-vercel-deploy-1.1.0.tgz#a8ecb5ffb1985c98ba973da41ec1c00aaf129090"
-    dependencies:
-      "@babel/runtime" "^7.12.5"
-      axios "^0.21.1"
-      nanoid "^3.1.20"
-      prop-types "^15.7.2"
-      react-polling "^1.0.9"
   
   sax@~1.2.4:
     version "1.2.4"
@@ -7894,6 +7942,13 @@ Lockfile:
     dependencies:
       hey-listen "^1.0.8"
       tslib "^1.10.0"
+  
+  style-value-types@4.1.4:
+    version "4.1.4"
+    resolved "https://registry.npmjs.org/style-value-types/-/style-value-types-4.1.4.tgz#80f37cb4fb024d6394087403dfb275e8bb627e75"
+    dependencies:
+      hey-listen "^1.0.8"
+      tslib "^2.1.0"
   
   styled-components@^5.0.0, styled-components@^5.2.1:
     version "5.2.1"

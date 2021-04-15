@@ -7,7 +7,8 @@ const GlobalStyle = createGlobalStyle`
   --main-mid: hsl(220,40%,30%);
   --main-light: hsl(220,30%,35%);
 
-  --accent-dark: hsl(19, 88%, 55%);
+  /* --accent-dark: hsl(19, 88%, 55%); */
+  --accent-dark: hsl(18, 87%, 50%);
   --accent-mid: hsl(19, 88%, 65%);
   --accent-light: hsl(19, 100%, 90%);
 
@@ -92,7 +93,8 @@ body,input,textarea{
 }
 
 a {
-  color: inherit;
+  display: inline-block;
+  color: var(--accent-dark);
     text-decoration: none;
 }
 
@@ -102,10 +104,23 @@ button {
   border: none;
 }
 
+  button:after, a:after {
+    display: block;
+    margin: auto;
+    content: '';
+    background: var(--accent-dark);
+    height: 2px;
+    width: 0;
+    transition: width 0.3s;
+  }
+  button:hover:after, a:hover:after {
+    width: 100%;
+  }
+
 p {margin-bottom: 1rem;}
 h1{
   margin: 0;
-  color: var(--accent-dark);
+  color: var(--text-light);
   background: var(--main-dark);
   padding: .5rem 0;
   font-family: 'Roboto', sans-serif;
@@ -115,6 +130,7 @@ h1{
 h2, h3, h4, h5{
   margin: 2.75rem 0 1.05rem;
   color: var(--main-dark);
+  /* color: var(--accent-dark); */
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   line-height: 1.3;

@@ -6,8 +6,6 @@ import { useSession } from 'next-auth/client'
 
 const CardStyles = styled.div`
   padding: 0.25rem;
-  /* height: 400px;
-  width: 400px; */
   min-width: 300px;
   max-width: 100vw;
   border-radius: 5px;
@@ -22,7 +20,6 @@ const CardStyles = styled.div`
   }
   .category-icon {
     svg {
-      /* display: inline-block; */
       height: 45px;
       width: 45px;
       margin: 0.25rem auto;
@@ -34,6 +31,7 @@ const CardStyles = styled.div`
   }
 
   .card-title {
+    cursor: pointer;
     display: grid;
     gap: 0.5rem;
     grid-template-columns: auto 1fr;
@@ -45,19 +43,7 @@ const CardStyles = styled.div`
   }
 
   a {
-    display: inline-block;
-  }
-  a:after {
-    margin: auto;
-    content: '';
-    display: block;
-    background: var(--accent-dark);
-    height: 2px;
-    width: 0;
-    transition: width 0.3s;
-  }
-  a:hover:after {
-    width: 100%;
+    color: inherit;
   }
 
   .lock {
@@ -77,12 +63,17 @@ const CategoryCard = ({ posts, category }) => {
   const [session] = useSession()
   return (
     <CardStyles>
-      <div className='card-title'>
-        <div className='category-icon'>
-          <RenderIcon iconName={category.icon} />
+      <Link
+        href='/categories/[slug]'
+        as={`/categories/${category.slug.current}`}
+      >
+        <div className='card-title'>
+          <div className='category-icon'>
+            <RenderIcon iconName={category.icon} />
+          </div>
+          <h2 className='text_extra_large'>{category.title}</h2>
         </div>
-        <h2 className='text_extra_large'>{category.title}</h2>
-      </div>
+      </Link>
       <ul>
         {posts.map((post) => (
           <li key={post._id}>

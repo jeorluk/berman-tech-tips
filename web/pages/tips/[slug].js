@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import client from '../../client'
 import { groq } from 'next-sanity'
@@ -7,6 +8,8 @@ import BlockContent from '@sanity/block-content-to-react'
 import LoginGate from '../../components/LoginGate'
 import { useSession } from 'next-auth/client'
 import Post from '../../components/Post'
+import Link from 'next/link'
+
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
   ...,
   body[]{
@@ -41,18 +44,45 @@ const Tip = ({ protectedPage, post, slug }) => {
     }
   }, [session, protectedPage, post])
   return (
-    <Page>
-      <h1>{postState.title}</h1>
-      {/*Show the LoginGate if the page is protected */}
-      <ConditionalWrapper
-        condition={protectedPage}
-        wrapper={(children) => (
-          <LoginGate message='access this article'>{children}</LoginGate>
-        )}
-      >
-        <Post post={postState} />
-      </ConditionalWrapper>
-    </Page>
+    <>
+      <Head>
+        <title>{postState.title}</title>
+      </Head>
+      <Page>
+        <h1>{postState.title}</h1>
+        <p
+          style={{
+            color: 'var(--accent-dark)',
+            margin: 'auto',
+            maxWidth: '1200px',
+            paddingTop: '1rem',
+            paddingLeft: '2rem',
+            fontWeight: 'bold',
+          }}
+        >
+          <Link href='/'>
+            <a>Home</a>
+          </Link>{' '}
+          > {` `}
+          <Link
+            href='/categories/[slug]'
+            as={`/categories/${post.categories[0].slug.current}`}
+          >
+            <a>{post.categories[0].title}</a>
+          </Link>{' '}
+          >{` ${post.title}`}
+        </p>
+        {/*Show the LoginGate if the page is protected */}
+        <ConditionalWrapper
+          condition={protectedPage}
+          wrapper={(children) => (
+            <LoginGate message='access this article'>{children}</LoginGate>
+          )}
+        >
+          <Post post={postState} />
+        </ConditionalWrapper>
+      </Page>
+    </>
   )
 }
 
@@ -76,7 +106,11 @@ export async function getStaticProps(props) {
   //If the page is protected, send post without body
   if (protectedPage) {
     return {
-      props: { protectedPage, slug, post: { title: post.title } },
+      props: {
+        protectedPage,
+        slug,
+        post: { title: post.title, categories: post.categories },
+      },
     }
   }
   //Otherwise return post details

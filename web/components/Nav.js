@@ -4,18 +4,17 @@ import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/client'
 import useModal from '../hooks/useModal'
 import RenderForm from './Forms/RenderForm'
-// import SuggestTopicForm from './Forms/SuggestTopicForm'
-// import HelpForm from './Forms/HelpForm'
-// import WifiForm from './Forms/WifiForm'
 
 const NavStyles = styled.nav`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  padding-top: 1rem;
 
-  @media (min-width: 800px) {
+  @media (min-width: 1200px) {
     justify-content: flex-end;
+    padding-top: 0;
   }
   ul {
     width: 100%;
@@ -43,17 +42,7 @@ const NavStyles = styled.nav`
   }
 
   button:after {
-    margin: auto;
-    content: '';
-    display: block;
     background: var(--text-light);
-    height: 2px;
-    width: 0;
-    transition: width 0.3s;
-  }
-  button:hover:after {
-    width: 100%;
-  }
 `
 
 const Nav = () => {
@@ -78,7 +67,6 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  // setComponent(<WifiForm />)
                   setComponent(<RenderForm formName='WifiForm' />)
                   setIsVisible(true)
                 }}
@@ -89,7 +77,6 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  // setComponent(<SuggestTopicForm />)
                   setComponent(<RenderForm formName='SuggestTopicForm' />)
                   setIsVisible(true)
                 }}
@@ -100,7 +87,6 @@ const Nav = () => {
             <li>
               <button
                 onClick={(e) => {
-                  // setComponent(<HelpForm />)
                   setComponent(<RenderForm formName='HelpForm' />)
                   setIsVisible(true)
                 }}

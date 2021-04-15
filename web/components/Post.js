@@ -44,6 +44,9 @@ const PostStyles = styled.div`
   max-width: 1200px;
   padding: 2rem;
 
+img{
+  box-shadow: var(--bs);
+}
   h3 {
     color: var(--accent-dark);
     font-size: var(--size-up-one);
@@ -51,17 +54,10 @@ const PostStyles = styled.div`
   }
 
   .note {
-    /* max-width: 75%; */
     max-width: 800px;
     margin: 0.5rem auto;
-    /* margin-bottom: 0.25rem; */
     position: relative;
     padding-left: 5rem;
-    /* border-left: 2px solid var(--main-dark); */
-    /* border-top: 2px solid linear-gradient(90deg, var(--main-dark, white)); */
-    /* background: linear-gradient(90deg, var(--main-dark), white); */
-    /* background-size: 100% 1px; */
-    /* background-position: 0 0; */
     border: 2px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(
@@ -80,10 +76,6 @@ const PostStyles = styled.div`
       font-style: italic;
       color: var(--accent-dark);
     }
-  }
-
-  strong {
-    color: var(--accent-dark);
   }
 
   button {

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Nav from './Nav'
 import { BermanLogo } from '../Icons'
-import Link from 'next/link'
 
 const HeaderStyles = styled.header`
   background: var(--main-dark);
@@ -27,11 +26,9 @@ const Header = () => {
   return (
     <HeaderStyles>
       <div className='logo'>
-        <Link href='/'>
-          <a>
-            <BermanLogo />
-          </a>
-        </Link>
+        {/* <a href='https://bermanhebrewacademy.org'> */}
+        <BermanLogo title='Berman Hebrew Academy home page' />
+        {/* </a> */}
       </div>
       <Nav />
     </HeaderStyles>
