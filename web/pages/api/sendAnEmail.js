@@ -10,6 +10,7 @@ const sendAnEmail = async (req, res) => {
     const { subject = 'Form Submission', ...fields } = data
 
     const SEND_TO = process.env.CONTACT_ADDRESS
+    console.log('The function will run.')
     const { privateKey } = JSON.parse(
       process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
     )
@@ -39,6 +40,7 @@ const sendAnEmail = async (req, res) => {
         `,
       })
     } catch (err) {
+      console.log('We hit an error!')
       console.error(err)
       return res.status(500).json({
         success: false,
