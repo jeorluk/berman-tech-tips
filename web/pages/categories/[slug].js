@@ -34,7 +34,7 @@ export async function getStaticProps(props) {
   ...,
   "postList": *[_type == 'post' &&
   
-    ^._id in categories[]._ref]{
+    ^._id in categories[]._ref]| order(title asc){
       _id,
    title,
    protectedPage,

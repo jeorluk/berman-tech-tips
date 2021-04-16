@@ -61,6 +61,7 @@ const CardStyles = styled.div`
 
 const CategoryCard = ({ posts, category }) => {
   const [session] = useSession()
+  const MAX_CARD_ITEMS = 10
   return (
     <CardStyles>
       <Link
@@ -75,7 +76,7 @@ const CategoryCard = ({ posts, category }) => {
         </div>
       </Link>
       <ul>
-        {posts.map((post) => (
+        {posts.slice(0, MAX_CARD_ITEMS).map((post) => (
           <li key={post._id}>
             <Link href={`/tips/${post.slug.current}`}>
               <a>{post.title}</a>
@@ -89,6 +90,19 @@ const CategoryCard = ({ posts, category }) => {
             )}
           </li>
         ))}
+        {posts.length > MAX_CARD_ITEMS && (
+          <li>
+            {' '}
+            <Link
+              href='/categories/[slug]'
+              as={`/categories/${category.slug.current}`}
+            >
+              <a>
+                <strong>See more...</strong>
+              </a>
+            </Link>
+          </li>
+        )}
       </ul>
     </CardStyles>
   )

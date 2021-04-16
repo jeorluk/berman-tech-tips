@@ -110,7 +110,7 @@ const Home = ({ posts, categoryList }) => {
 }
 
 export async function getStaticProps() {
-  const postQuery = groq`*[_type == "post"] | order(_updatedAt desc){
+  const postQuery = groq`*[_type == "post"] | order(title asc){
     title,
     slug,
     protectedPage,
