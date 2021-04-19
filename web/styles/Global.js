@@ -7,8 +7,8 @@ const GlobalStyle = createGlobalStyle`
   --main-mid: hsl(220,40%,30%);
   --main-light: hsl(220,30%,35%);
 
-  /* --accent-dark: hsl(19, 88%, 55%); */
-  --accent-dark: hsl(18, 87%, 50%);
+  --accent-dark: hsl(19, 88%, 55%);
+  /* --accent-dark: hsl(18, 87%, 50%); */
   --accent-mid: hsl(19, 88%, 65%);
   --accent-light: hsl(19, 100%, 90%);
 
@@ -153,5 +153,11 @@ h3, .text_extra_large {font-size: var(--size-up-three);}
 h4 {font-size: var(--size-up-two);}
 h5,input,textarea,.text_large {font-size: var(--size-up-one);}
 small, .text_small {font-size: var(--size-down-one);}
+
+@media(max-width: 750px){
+  li{
+    padding: .5rem 0;
+  }
+}
 `
 export default GlobalStyle
