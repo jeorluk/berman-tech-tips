@@ -5,13 +5,21 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/client'
 
 const CardStyles = styled.div`
-  padding: 0.25rem;
-  min-width: 300px;
-  max-width: 100vw;
-  border-radius: 5px;
-  border: 1px solid var(--main-dark);
-  background: var(--neutral-light);
-  box-shadow: var(--bs);
+  @media (max-width: 750px) {
+    &:not(:last-child) {
+      border-bottom: 2px solid var(--accent-dark);
+    }
+  }
+
+  @media (min-width: 750px) {
+    padding: 0.25rem;
+    min-width: 300px;
+    max-width: 100vw;
+    border-radius: 5px;
+    border: 1px solid var(--main-dark);
+    background: var(--neutral-light);
+    box-shadow: var(--bs);
+  }
 
   h2 {
     margin: 0;

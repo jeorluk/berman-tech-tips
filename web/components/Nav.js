@@ -10,11 +10,11 @@ const NavStyles = styled.nav`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  padding-top: 1rem;
+  padding: 2rem 0;
 
   @media (min-width: 1200px) {
     justify-content: flex-end;
-    padding-top: 0;
+    padding: 0;
   }
   ul {
     width: 100%;
