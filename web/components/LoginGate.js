@@ -1,26 +1,38 @@
-import { useSession } from 'next-auth/client'
+import { useSession, signIn } from 'next-auth/client'
 import React from 'react'
 import styled from 'styled-components'
-
+import Button from '../styles/Button'
 const LoginGateStyles = styled.div`
   width: 100vw;
-  max-width: 700px;
-  background: var(--accent-dark);
+  max-width: 500px;
+  margin: auto;
+
+  clip-path: url(#splat);
+  -webkit-clip-path: url(#splat);
+
+  background: var(--main-dark);
   color: var(--text-light);
 
-  margin: auto;
-  -webkit-clip-path: url(#splat);
-  clip-path: url(#splat);
-  width: 100%;
-  max-width: 500px;
+  /* max-width: 700px; */
+  /* width: 100%; */
   display: flex;
   align-items: center;
-  justify-items: center;
+  /* justify-items: center; */
 
+  #content {
+    /* border: 2px solid yellow; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+    padding-left: 2rem;
+  }
   p {
-    width: 50%;
+    width: 60%;
     margin: auto;
     text-align: center;
+    padding-bottom: 0.5rem;
   }
   :after {
     content: '';
@@ -28,11 +40,15 @@ const LoginGateStyles = styled.div`
     padding-top: 100%;
   }
 
-  #bighand {
+  /* #bighand {
     font-size: var(--size-up-three);
     transform: rotate(60deg);
+  } */
+  #login-button {
+    margin: 0 auto;
+    /* width: 100%; */
+    /* background: green; */
   }
-
   svg {
     height: 0;
     width: 0;
@@ -42,16 +58,24 @@ const LoginGateStyles = styled.div`
 const LoginGate = ({ message = "do what you're trying to do", children }) => {
   const [session] = useSession()
 
+  function handleSignin(e) {
+    e.preventDefault()
+    signIn('google')
+  }
+
   return session ? (
     { ...children }
   ) : (
     <LoginGateStyles>
       <div id='content'>
-        <p id='bighand'>👆</p>
+        {/* <p id='bighand'>👆</p> */}
         <p>
           Whoops! Unfortunately, you can only {message} if you're logged in with
-          your Berman staff account. Try that handy link up there
+          your Berman staff account.
         </p>
+        <Button id='login-button' onClick={handleSignin}>
+          Log In
+        </Button>
       </div>
       <svg className='svg'>
         <clipPath id='splat' clipPathUnits='objectBoundingBox'>

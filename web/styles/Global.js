@@ -102,6 +102,7 @@ button {
   font-size: inherit;
   color: inherit;
   border: none;
+  cursor: pointer;
 }
 
   button:after, a:after {
