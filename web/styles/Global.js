@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   --bs: 0 3px 6px rgba(0,0,0,.7);
 
   /* Break Points */
-  --tablet-break: 800px;
+  --tablet-break: 750px;
   --desktop-break: 1200px;
 
   /*Type sizes (Major Second for mobile) */

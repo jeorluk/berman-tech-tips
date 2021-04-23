@@ -10,7 +10,7 @@ const HeaderStyles = styled.header`
 
   .logo {
     justify-self: center;
-    width: 300px;
+    width: 200px;
     svg {
       height: 100%;
       width: 100%;

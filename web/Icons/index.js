@@ -7,6 +7,9 @@ import Zoom from './Zoom.svg'
 import BermanLogo from './BermanLogo.svg'
 import Splat from './Splat.svg'
 import Lock from './Lock.svg'
+import Youtube from './Youtube.svg'
+import Facebook from './Facebook.svg'
+import Instagram from './Instagram.svg'
 
 export {
   Wifi,
@@ -18,4 +21,7 @@ export {
   BermanLogo,
   Splat,
   Lock,
+  Youtube,
+  Instagram,
+  Facebook,
 }
