@@ -44,10 +44,10 @@ const PostStyles = styled.div`
   max-width: 1200px;
   padding: 2rem;
 
-img{
-  max-width: 100%;
-  box-shadow: var(--bs);
-}
+  img {
+    max-width: 100%;
+    box-shadow: var(--bs);
+  }
   h3 {
     color: var(--accent-dark);
     font-size: var(--size-up-one);
@@ -66,24 +66,24 @@ img{
       var(--accent-dark) 20%,
       white 80%
     );
+  }
 
-    &::before {
-      content: 'Look !';
-      position: absolute;
-      top: 20%;
-      left: 4px;
+  &::before {
+    content: 'Look !';
+    position: absolute;
+    top: 20%;
+    left: 4px;
 
-      font-family: 'Rock Salt';
-      font-style: italic;
-      color: var(--accent-dark);
-    }
-  
+    font-family: 'Rock Salt';
+    font-style: italic;
+    color: var(--accent-dark);
+  }
 
   button {
     cursor: pointer;
     padding: 0;
     margin: 0;
-    color var(--accent-dark);
+    color: var(--accent-dark);
     font-weight: bold;
     background: inherit;
   }
