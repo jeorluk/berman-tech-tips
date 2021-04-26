@@ -45,6 +45,7 @@ const PostStyles = styled.div`
   padding: 2rem;
 
 img{
+  max-width: 100%;
   box-shadow: var(--bs);
 }
   h3 {
@@ -76,7 +77,7 @@ img{
       font-style: italic;
       color: var(--accent-dark);
     }
-  }
+  
 
   button {
     cursor: pointer;
