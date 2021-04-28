@@ -63,14 +63,18 @@ export default {
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
+      category0: 'categories.0.title',
+      category1: 'categories.1.title',
+      category2: 'categories.2.title',
     },
-    prepare(selection) {
-      const { author } = selection
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`,
-      })
+    prepare: (selection) => {
+      const { title, category0, category1, category2 } = selection
+      const categories = [category0, category1, category2].filter(Boolean)
+      const subtitle = categories.length > 0 ? categories.join(', ') : ''
+      return {
+        title,
+        subtitle,
+      }
     },
   },
 }

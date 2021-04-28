@@ -68,7 +68,7 @@ const PostStyles = styled.div`
     );
   }
 
-  &::before {
+  .note::before {
     content: 'Look !';
     position: absolute;
     top: 20%;
