@@ -78,7 +78,7 @@ const FooterStyles = styled.footer`
       grid-area: jfgw-logo;
       /* padding: 1rem; */
       margin: 1rem auto;
-      justofy-self: center;
+      justify-self: center;
     }
 
     @media (min-width: 750px) {
@@ -88,10 +88,14 @@ const FooterStyles = styled.footer`
         'line line line'
         'nav nav jfgw-logo';
       justify-items: flex-start;
-      #contact {
+      address {
+        a {
+          color: var(--text-light);
+        }
         margin: 0;
         justify-self: flex-start;
         text-align: left;
+        font-style: normal;
       }
       #nav {
         /* justify-self: flex-start; */
@@ -114,15 +118,15 @@ const Footer = () => {
             />
           </a>
         </div>
-        <p id='contact'>
+        <address>
           Harry A. Epstein Campus
           <br />
           13300 Arctic Avenue
           <br />
           Rockville, MD 20853
           <br />
-          301-962-9400
-        </p>
+          <a href='tel:1-301-96209400'>301-962-9400</a>
+        </address>
 
         <div id='social-links'>
           <a href='https://www.facebook.com/BermanHebrewAcademy'>
