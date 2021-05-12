@@ -125,7 +125,7 @@ const Footer = () => {
           <br />
           Rockville, MD 20853
           <br />
-          <a href='tel:1-301-96209400'>301-962-9400</a>
+          <a href='tel:1-301-962-9400'>301-962-9400</a>
         </address>
 
         <div id='social-links'>
