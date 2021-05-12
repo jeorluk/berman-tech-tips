@@ -38,7 +38,10 @@ const FooterStyles = styled.footer`
         width: 100%;
       }
     }
-    #contact {
+    address {
+      a {
+        color: var(--text-light);
+      }
       margin: auto;
       grid-area: contact;
     }
@@ -89,9 +92,6 @@ const FooterStyles = styled.footer`
         'nav nav jfgw-logo';
       justify-items: flex-start;
       address {
-        a {
-          color: var(--text-light);
-        }
         margin: 0;
         justify-self: flex-start;
         text-align: left;
