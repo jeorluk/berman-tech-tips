@@ -6,10 +6,10 @@ const getFilteredPosts = ({ categoryId, postList }) => {
 }
 
 function checkCategories(categoryId, post) {
-  const intersection = post.categories.filter(
+  const intersection = post.categories?.filter(
     (category) => category._id === categoryId
   )
-  return intersection.length > 0
+  return intersection?.length > 0
 }
 
 export default getFilteredPosts

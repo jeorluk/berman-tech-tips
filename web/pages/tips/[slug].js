@@ -62,15 +62,20 @@ const Tip = ({ protectedPage, post, slug }) => {
         >
           <Link href='/'>
             <a>Home</a>
-          </Link>{' '}
-          > {` `}
-          <Link
-            href='/categories/[slug]'
-            as={`/categories/${post.categories[0].slug.current}`}
-          >
-            <a>{post.categories[0].title}</a>
-          </Link>{' '}
-          >{` ${post.title}`}
+          </Link>
+          {` > `}
+          {post.categories && (
+            <>
+              <Link
+                href='/categories/[slug]'
+                as={`/categories/${post.categories[0].slug.current}`}
+              >
+                <a>{post.categories[0].title}</a>
+              </Link>
+              {` > `}
+            </>
+          )}
+          {post.title}
         </p>
         {/*Show the LoginGate if the page is protected */}
         <ConditionalWrapper
