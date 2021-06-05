@@ -31,7 +31,7 @@ const formLink = (props) => {
 }
 const internalLink = (props) => {
   return (
-    <Link href='/tips/[slug]' as={`/tips/${props.mark.slug.current}`}>
+    <Link href={`/tips/${props.mark.slug.current}`}>
       <a>
         <strong>{props.children}</strong>
       </a>
