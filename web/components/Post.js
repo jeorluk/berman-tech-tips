@@ -39,6 +39,33 @@ const internalLink = (props) => {
   )
 }
 
+const Post = ({ post }) => {
+  return (
+    <PostStyles>
+      {post.body && (
+        <BlockContent
+          projectId='ezgk3b8g'
+          dataset='production'
+          blocks={post.body}
+          serializers={{
+            types: { block: BlockRenderer },
+            marks: { internalLink, formLink },
+          }}
+        />
+      )}
+      <hr />
+      <p>
+        Last updated:{' '}
+        {new Intl.DateTimeFormat('en-US').format(
+          post._updatedAt ? new Date(post._updatedAt) : null
+        )}
+      </p>
+    </PostStyles>
+  )
+}
+
+export default Post
+
 const PostStyles = styled.div`
   margin: auto;
   max-width: 1200px;
@@ -88,30 +115,3 @@ const PostStyles = styled.div`
     background: inherit;
   }
 `
-
-const Post = ({ post }) => {
-  return (
-    <PostStyles>
-      {post.body && (
-        <BlockContent
-          projectId='ezgk3b8g'
-          dataset='production'
-          blocks={post.body}
-          serializers={{
-            types: { block: BlockRenderer },
-            marks: { internalLink, formLink },
-          }}
-        />
-      )}
-      <hr />
-      <p>
-        Last updated:{' '}
-        {new Intl.DateTimeFormat('en-US').format(
-          post._updatedAt ? new Date(post._updatedAt) : null
-        )}
-      </p>
-    </PostStyles>
-  )
-}
-
-export default Post
