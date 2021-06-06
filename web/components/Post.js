@@ -8,7 +8,6 @@ import RenderForm from './Forms/RenderForm'
 const BlockRenderer = (props) => {
   const { style = 'normal' } = props.node
   if (style == 'note') {
-    console.log({ props })
     return <div className='note'>{props.children}</div>
   }
 
@@ -16,7 +15,6 @@ const BlockRenderer = (props) => {
 }
 
 const formLink = (props) => {
-  console.log(props)
   const { setIsVisible, setComponent } = useModal()
   return (
     <button

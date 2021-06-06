@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import client from '../../client'
 import { groq } from 'next-sanity'
+import { useRouter } from 'next/router'
 import Page from '../../components/Page'
-import BlockContent from '@sanity/block-content-to-react'
 import LoginGate from '../../components/LoginGate'
 import { useSession } from 'next-auth/client'
 import Post from '../../components/Post'
@@ -36,10 +35,14 @@ const Tip = ({ protectedPage, post, slug }) => {
   //Initialize state from props
   const [postState, setPostState] = useState(post)
   const [session] = useSession()
+  const router = useRouter()
 
   useEffect(async () => {
     if (session && protectedPage) {
-      const { protectedPage, ...post } = await pageQuery(slug)
+      const protectedQueryResult = await pageQuery(slug)
+      const { protectedPage, ...protectedPost } = await pageQuery(slug)
+      setPostState(protectedPost)
+    } else {
       setPostState(post)
     }
   }, [session, protectedPage, post])
@@ -48,7 +51,7 @@ const Tip = ({ protectedPage, post, slug }) => {
       <Head>
         <title>{postState.title}</title>
       </Head>
-      <Page>
+      <Page key={router.asPath}>
         <h1>{postState.title}</h1>
         <p
           style={{
