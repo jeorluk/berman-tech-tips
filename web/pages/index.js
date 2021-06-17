@@ -8,29 +8,6 @@ import CategoryCard from '../components/CategoryCard'
 import CategoryCardHolder from '../styles/CategoryCardHolder'
 import getFilteredPosts from '../util/getFilteredPosts'
 
-const MainContent = styled.div`
-  width: 100%;
-  display: grid;
-
-  .intro {
-    margin: auto;
-    max-width: 800px;
-    border-radius: 5px;
-    padding: 0 0.5rem;
-    ul {
-      list-style: none;
-      padding-left: 0.75rem;
-      margin: 0;
-    }
-    li:not(:last-of-type) {
-      padding-bottom: 0.25rem;
-    }
-
-    strong {
-      /* color: var(--accent-dark); */
-    }
-  }
-`
 const Home = ({ posts, categoryList }) => {
   const [session] = useSession()
   return (
@@ -120,16 +97,40 @@ export async function getStaticProps() {
 
 }`
 
-  const categoryQuery = groq`*[_type == "category"] | order(title){
-    ...,
-    "imageUrl": icon.asset->url
-  }`
+  const categoryListQuery = groq`*[_type == "list" && name =="Category List"][0] {
+  listItems[]->
+}`
 
   const posts = await client.fetch(postQuery)
-  const categoryList = await client.fetch(categoryQuery)
+  const { listItems: categoryList } = await client.fetch(categoryListQuery)
+
   return {
     props: { posts, categoryList },
   }
 }
+
+const MainContent = styled.div`
+  width: 100%;
+  display: grid;
+
+  .intro {
+    margin: auto;
+    max-width: 800px;
+    border-radius: 5px;
+    padding: 0 0.5rem;
+    ul {
+      list-style: none;
+      padding-left: 0.75rem;
+      margin: 0;
+    }
+    li:not(:last-of-type) {
+      padding-bottom: 0.25rem;
+    }
+
+    strong {
+      /* color: var(--accent-dark); */
+    }
+  }
+`
 
 export default Home
