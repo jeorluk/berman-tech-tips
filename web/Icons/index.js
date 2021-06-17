@@ -12,8 +12,10 @@ import Wifi from './Wifi.svg'
 import Youtube from './Youtube.svg'
 import Zoom from './Zoom.svg'
 import GoogleWorkspace from './GoogleWorkspace.svg'
+import Chrome from './Chrome.svg'
 
 export {
+  Chrome,
   GoogleWorkspace,
   BermanLogo,
   DockingStation,
