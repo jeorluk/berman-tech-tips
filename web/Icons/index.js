@@ -11,8 +11,10 @@ import Splat from './Splat.svg'
 import Wifi from './Wifi.svg'
 import Youtube from './Youtube.svg'
 import Zoom from './Zoom.svg'
+import GoogleWorkspace from './GoogleWorkspace.svg'
 
 export {
+  GoogleWorkspace,
   BermanLogo,
   DockingStation,
   Facebook,
