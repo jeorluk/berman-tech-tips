@@ -10,11 +10,9 @@ const sendAnEmail = async (req, res) => {
     const { subject = 'Form Submission', ...fields } = data
 
     const SEND_TO = process.env.CONTACT_ADDRESS
-    console.log('The function will run.')
     const { privateKey } = JSON.parse(
       process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
     )
-    console.log(privateKey)
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,

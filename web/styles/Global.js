@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components'
-
 const GlobalStyle = createGlobalStyle`
 :root{
   /* Colors */
@@ -76,11 +75,15 @@ html {
   box-sizing: border-box;
 }
 body {
+
   /* position: relative; */
-min-height: 100vh; 
+  min-height: 100vh; 
   width: 100%;
   background: var(--neutral-light);
+  overflow-y: ${(props) => (props.modalVisible ? 'hidden' : '')};
   padding: 0;
+  padding-right: ${(props) => (props.modalVisible ? '15px' : '0')};
+  /* padding-right: 15px; */
   margin: 0;
 }
 

@@ -5,7 +5,8 @@ import * as Yup from 'yup'
 import Button from '../../styles/Button'
 import SuccessMessage from '../SuccessMessage'
 import useModal from '../../hooks/useModal'
-const macRegex = /^([0-9a-fA-F][0-9a-fA-F][-:]{0,1}){5}([0-9a-fA-F][0-9a-fA-F])$/
+const macRegex =
+  /^([0-9a-fA-F][0-9a-fA-F][-:]{0,1}){5}([0-9a-fA-F][0-9a-fA-F])$/
 const ValidationSchema = Yup.object().shape({
   name: Yup.string().required('Required!'),
   deviceType: Yup.string().required('Required!'),
@@ -57,18 +58,24 @@ const WifiForm = () => {
               receive a confirmation email when your device has been registered
               and you can log into the Berman-Staff network.
             </p>
-            <label htmlFor='name'>Name</label>
-            <ErrorMessage component='span' name='name' />
+            <label className='required' htmlFor='name'>
+              Name
+              <ErrorMessage component='span' name='name' />
+            </label>
             <Field name='name' type='text' />
 
-            <label htmlFor='deviceType'>Device Type</label>
-            <ErrorMessage component='span' name='deviceType' />
+            <label className='required' htmlFor='deviceType'>
+              Device Type
+              <ErrorMessage component='span' name='deviceType' />
+            </label>
             <Field name='deviceType' type='text' />
 
-            <label htmlFor='macAddress'>MAC Address</label>
-            <ErrorMessage component='span' name='macAddress' />
+            <label className='required' htmlFor='macAddress'>
+              MAC Address
+              <ErrorMessage component='span' name='macAddress' />
+            </label>
             <Field name='macAddress' type='text' />
-
+            <p>* indicates a required field.</p>
             <Button disabled={isSubmitting} type='submit'>
               Submit
             </Button>

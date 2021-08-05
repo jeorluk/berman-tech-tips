@@ -42,16 +42,18 @@ const SuggestTopicForm = () => {
               Let us know!
             </p>
             {status && <span>{status}</span>}
-            <label htmlFor='title'>Topic Title</label>
-            <ErrorMessage component='span' name='title' />
+            <label className='required' htmlFor='title'>
+              Topic Title
+              <ErrorMessage component='span' name='title' />
+            </label>
             <Field name='title' type='text' />
 
-            <label htmlFor='description'>
+            <label className='required' htmlFor='description'>
               Let us know any details you think should be included
+              <ErrorMessage component='span' name='description' />
             </label>
-            <ErrorMessage component='span' name='description' />
             <Field as='textarea' name='description' rows='5' />
-
+            <p>* indicates a required field.</p>
             <Button type='submit' disabled={isSubmitting}>
               Submit
             </Button>

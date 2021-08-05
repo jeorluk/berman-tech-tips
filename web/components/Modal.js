@@ -21,8 +21,9 @@ const ModalStyles = styled(motion.div)`
 const Inner = styled(motion.div)`
   margin: auto;
   padding: 1rem;
+  height: 90vh;
   max-width: 800px;
-  overflow: hidden;
+  overflow-y: auto;
   border-radius: 1rem;
   background: var(--neutral-light);
   box-shadow: var(--bs);
@@ -31,7 +32,7 @@ const Inner = styled(motion.div)`
   align-content: flex-start;
   justify-items: stretch;
   @media (max-width: 800px) {
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     border-radius: 0;
   }
@@ -59,40 +60,42 @@ const variants = {
 }
 const transition = { duration: 0.6, times: [0, 0.1, 0.5, 0.9, 1] }
 const Modal = ({ children }) => {
-  const { isVisible, component, setIsVisible, setComponent } = useContext(
-    ModalContext
-  )
+  const { isVisible, component, setIsVisible, setComponent } =
+    useContext(ModalContext)
 
   return (
     <AnimatePresence>
       {isVisible && (
-        <ModalStyles
-          key='modal'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={transition}
-        >
-          <Inner
-            key='inner'
-            initial='hidden'
-            animate='visible'
-            exit='hidden'
-            variants={variants}
+        <>
+          <ModalStyles
+            key='modal'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={transition}
+            visible={isVisible}
           >
-            <Button
-              id='close-button'
-              onClick={() => {
-                setIsVisible(false)
-                setComponent(null)
-              }}
+            <Inner
+              key='inner'
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+              variants={variants}
+              transition={transition}
             >
-              {'\u00d7'}
-            </Button>
-            {component}
-          </Inner>
-        </ModalStyles>
+              <Button
+                id='close-button'
+                onClick={() => {
+                  setIsVisible(false)
+                  setComponent(null)
+                }}
+              >
+                {'\u00d7'}
+              </Button>
+              {component}
+            </Inner>
+          </ModalStyles>
+        </>
       )}
     </AnimatePresence>
   )

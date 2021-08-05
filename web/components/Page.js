@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { ModalContext } from '../context/modalContext'
+import GlobalStyle from '../styles/Global'
 import Footer from './Footer'
 import Header from './Header'
 import Modal from './Modal'
@@ -32,13 +34,18 @@ const Main = styled.main`
   height: 100%;
 `
 const Page = ({ children }) => {
+  const { isVisible } = useContext(ModalContext)
   return (
-    <PageStyles>
-      <Modal />
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
-    </PageStyles>
+    <>
+      <GlobalStyle modalVisible={isVisible} />
+
+      <PageStyles>
+        <Modal />
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </PageStyles>
+    </>
   )
 }
 

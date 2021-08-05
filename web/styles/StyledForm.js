@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const StyledForm = styled.div`
   background: var(--neutral-light);
   form {
-    font-color: var(--text-light);
+    /* color: var(--text-light); */
     margin: auto;
     max-width: 100%;
     display: grid;
@@ -13,12 +13,16 @@ export const StyledForm = styled.div`
     }
   }
 
-  label {
-    padding-top: 2rem;
+  span,
+  .required:after {
+    margin: 0 2px;
+    font-weight: bold;
+    content: '*';
+    color: var(--accent-dark);
   }
 
-  span {
-    font-weight: bold;
-    color: var(--accent-dark);
+  label {
+    padding-top: 2rem;
+    display: inline;
   }
 `
