@@ -37,7 +37,7 @@ const WifiForm = () => {
         values.macAddress = formattedMac
         const response = await fetch('/api/sendAnEmail', {
           method: 'POST',
-          headers: { 'Content-Tyoe': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ subject: 'Wifi Registration', ...values }),
         })
         const data = await response.json()

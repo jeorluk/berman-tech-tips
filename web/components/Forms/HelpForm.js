@@ -24,7 +24,7 @@ const HelpForm = () => {
       onSubmit={async (values) => {
         const response = await fetch('/api/sendAnEmail', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ subject: 'Support Request', ...values }),
         })
         const data = await response.json()

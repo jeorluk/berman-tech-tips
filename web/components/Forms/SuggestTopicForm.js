@@ -20,7 +20,7 @@ const SuggestTopicForm = () => {
       onSubmit={async (values, actions) => {
         const response = await fetch('/api/sendAnEmail', {
           method: 'POST',
-          headers: { 'Content-Tyoe': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({ subject: 'Topic Suggestion', ...values }),
         })
         const data = await response.json()
