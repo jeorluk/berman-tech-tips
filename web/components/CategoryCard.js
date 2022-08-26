@@ -68,7 +68,7 @@ const CardStyles = styled.div`
 `
 
 const CategoryCard = ({ posts, category }) => {
-  const {session} = useSession()
+  const {data: session} = useSession()
   const MAX_CARD_ITEMS = 10
   return (
     <CardStyles>

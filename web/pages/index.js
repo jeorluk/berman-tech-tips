@@ -9,7 +9,7 @@ import CategoryCardHolder from '../styles/CategoryCardHolder'
 import getFilteredPosts from '../util/getFilteredPosts'
 
 const Home = ({ posts, categoryList }) => {
-  const {session} = useSession()
+  const {data: session} = useSession()
   return (
     <>
       <Head>

@@ -34,7 +34,7 @@ const ConditionalWrapper = ({ condition, wrapper, children }) =>
 const Tip = ({ protectedPage, post, slug }) => {
   //Initialize state from props
   const [postState, setPostState] = useState(post)
-  const {session} = useSession()
+  const {data: session} = useSession()
   const router = useRouter()
 
   useEffect(async () => {

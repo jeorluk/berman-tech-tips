@@ -56,7 +56,7 @@ const LoginGateStyles = styled.div`
   }
 `
 const LoginGate = ({ message = "do what you're trying to do", children }) => {
-  const {session} = useSession()
+  const {data: session} = useSession()
 
   function handleSignin(e) {
     e.preventDefault()

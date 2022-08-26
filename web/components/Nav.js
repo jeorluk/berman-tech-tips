@@ -47,7 +47,7 @@ const NavStyles = styled.nav`
 `
 
 const Nav = () => {
-  const {session} = useSession()
+  const {data: session} = useSession()
   const { setIsVisible, setComponent } = useModal()
 
   function handleSignin(e) {

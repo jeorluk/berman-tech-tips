@@ -50,7 +50,7 @@ const CategoryPageStyles = styled.div`
   }
 `
 const CategoryPage = ({ category, posts }) => {
-  const {session} = useSession()
+  const {data: session} = useSession()
   return (
     <CategoryPageStyles>
       <div className='title-bar'>
