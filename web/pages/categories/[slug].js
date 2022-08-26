@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { groq } from 'next-sanity'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import client from '../../client'
 import Page from '../../components/Page'
 import styled from 'styled-components'

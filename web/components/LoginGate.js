@@ -1,4 +1,4 @@
-import { useSession, signIn } from 'next-auth/client'
+import { useSession, signIn } from 'next-auth/react'
 import React from 'react'
 import styled from 'styled-components'
 import Button from '../styles/Button'
@@ -56,7 +56,7 @@ const LoginGateStyles = styled.div`
   }
 `
 const LoginGate = ({ message = "do what you're trying to do", children }) => {
-  const [session] = useSession()
+  const {session} = useSession()
 
   function handleSignin(e) {
     e.preventDefault()

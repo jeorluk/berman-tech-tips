@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 
-import { getSession } from 'next-auth/client'
+import { getSession } from 'next-auth/react'
 
 const sendAnEmail = async (req, res) => {
   const session = await getSession({ req })

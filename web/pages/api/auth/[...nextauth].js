@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import GoogleProvider from 'next-auth/providers/google'
 
 async function isUserStaff(email) {
   const { google } = require('googleapis')
@@ -32,7 +32,6 @@ async function isUserStaff(email) {
     ],
     'orlukj@mjbha.org'
   )
-
   auth.authorize((err) => {
     if (err) {
       console.log(err)
@@ -51,40 +50,40 @@ async function isUserStaff(email) {
 
 const options = {
   providers: [
-    Providers.Google({
-      id: 'google',
-      name: 'Google',
-      type: 'oauth',
-      version: '2.0',
-      scope:
-        'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/admin.directory.group.readonly',
-      params: { grant_type: 'authorization_code' },
-      accessTokenUrl: 'https://accounts.google.com/o/oauth2/token',
-      requestTokenUrl: 'https://accounts.google.com/o/oauth2/auth',
-      authorizationUrl:
-        'https://accounts.google.com/o/oauth2/auth?prompt=select_account&response_type=code&hd=mjbha.org',
-      profileUrl: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
-      profile: (profile) => {
-        return {
-          profile: profile,
-          id: profile.id,
-          name: profile.name,
-          email: profile.email,
-          image: profile.picture,
-        }
-      },
+    GoogleProvider({
+      // id: 'google',
+      // name: 'Google',
+      // type: 'oauth',
+      // version: '2.0',
+      // scope:
+      //   'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/admin.directory.group.readonly',
+      // params: { grant_type: 'authorization_code' },
+      // token: 'https://accounts.google.com/o/oauth2/token',
+      // requestTokenUrl: 'https://accounts.google.com/o/oauth2/auth',
+      // authorization:
+      //   'https://accounts.google.com/o/oauth2/auth?prompt=select_account&response_type=code&hd=mjbha.org',
+      // userinfo: 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json',
+      // profile: (profile) => {
+      //   return {
+      //     id: profile.id,
+      //     name: profile.name,
+      //     email: profile.email,
+      //     image: profile.picture,
+      //   }
+      // },
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
   callbacks: {
-    signIn: async (user, account, profile) => {
+   async signIn ({user, account, profile}) {
       if (
         account.provider === 'google' &&
-        profile.verified_email === true &&
+        profile.email_verified === true &&
         profile.email.endsWith('@mjbha.org') &&
-        (await isUserStaff(profile.email))
+        await isUserStaff(profile.email)
       ) {
+      
         return Promise.resolve(true)
       } else {
         return Promise.resolve(false)

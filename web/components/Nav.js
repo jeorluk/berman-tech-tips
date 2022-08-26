@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useSession, signIn, signOut } from 'next-auth/client'
+import { useSession, signIn, signOut } from 'next-auth/react'
 import useModal from '../hooks/useModal'
 import RenderForm from './Forms/RenderForm'
 
@@ -43,10 +43,11 @@ const NavStyles = styled.nav`
 
   button:after {
     background: var(--text-light);
+  }
 `
 
 const Nav = () => {
-  const [session] = useSession()
+  const {session} = useSession()
   const { setIsVisible, setComponent } = useModal()
 
   function handleSignin(e) {

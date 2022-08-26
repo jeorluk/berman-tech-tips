@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import RenderIcon from '../Icons/RenderIcon'
 import Link from 'next/link'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 
 const CardStyles = styled.div`
   @media (max-width: 750px) {
@@ -68,7 +68,7 @@ const CardStyles = styled.div`
 `
 
 const CategoryCard = ({ posts, category }) => {
-  const [session] = useSession()
+  const {session} = useSession()
   const MAX_CARD_ITEMS = 10
   return (
     <CardStyles>

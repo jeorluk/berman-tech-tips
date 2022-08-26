@@ -5,7 +5,7 @@ import { groq } from 'next-sanity'
 import { useRouter } from 'next/router'
 import Page from '../../components/Page'
 import LoginGate from '../../components/LoginGate'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import Post from '../../components/Post'
 import Link from 'next/link'
 
@@ -34,7 +34,7 @@ const ConditionalWrapper = ({ condition, wrapper, children }) =>
 const Tip = ({ protectedPage, post, slug }) => {
   //Initialize state from props
   const [postState, setPostState] = useState(post)
-  const [session] = useSession()
+  const {session} = useSession()
   const router = useRouter()
 
   useEffect(async () => {

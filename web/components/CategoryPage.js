@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import RenderIcon from '../Icons/RenderIcon'
 import Link from 'next/link'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 
 const CategoryPageStyles = styled.div`
   .title-bar {
@@ -50,7 +50,7 @@ const CategoryPageStyles = styled.div`
   }
 `
 const CategoryPage = ({ category, posts }) => {
-  const [session] = useSession()
+  const {session} = useSession()
   return (
     <CategoryPageStyles>
       <div className='title-bar'>
@@ -70,7 +70,7 @@ const CategoryPage = ({ category, posts }) => {
         <Link href='/'>
           <a>Home</a>
         </Link>{' '}
-        > {category.title}
+         {category.title}
       </p>
       <ul>
         {posts.map((post) => (

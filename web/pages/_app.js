@@ -1,5 +1,5 @@
 import GlobalStyle from '../styles/Global'
-import { Provider } from 'next-auth/client'
+import { SessionProvider } from 'next-auth/react'
 import { FilterContextProvider } from '../context/filterContext'
 import { ModalContextProvider } from '../context/modalContext'
 
@@ -9,9 +9,9 @@ function MyApp({ Component, pageProps }) {
       {/* <GlobalStyle /> */}
       <FilterContextProvider>
         <ModalContextProvider>
-          <Provider session={pageProps.session}>
+          <SessionProvider session={pageProps.session}>
             <Component {...pageProps} />
-          </Provider>
+          </SessionProvider>
         </ModalContextProvider>
       </FilterContextProvider>
     </>

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { groq } from 'next-sanity'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import client from '../client'
 import Page from '../components/Page'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ import CategoryCardHolder from '../styles/CategoryCardHolder'
 import getFilteredPosts from '../util/getFilteredPosts'
 
 const Home = ({ posts, categoryList }) => {
-  const [session] = useSession()
+  const {session} = useSession()
   return (
     <>
       <Head>
