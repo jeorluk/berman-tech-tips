@@ -37,11 +37,14 @@ const Tip = ({ protectedPage, post, slug }) => {
   const {data: session} = useSession()
   const router = useRouter()
 
-  useEffect(async () => {
+  useEffect(() => {
     if (session && protectedPage) {
-      const protectedQueryResult = await pageQuery(slug)
-      const { protectedPage, ...protectedPost } = await pageQuery(slug)
-      setPostState(protectedPost)
+      const fetchData = async () => {
+        const protectedQueryResult = await pageQuery(slug)
+        const { protectedPage, ...protectedPost } = await pageQuery(slug)
+        setPostState(protectedPost)
+      }
+      fetchData().catch(console.log(error))
     } else {
       setPostState(post)
     }
@@ -80,7 +83,7 @@ const Tip = ({ protectedPage, post, slug }) => {
           )}
           {post.title}
         </p>
-        {/*Show the LoginGate if the page is protected */}
+        {/* Show the LoginGate if the page is protected */}
         <ConditionalWrapper
           condition={protectedPage}
           wrapper={(children) => (
@@ -89,7 +92,7 @@ const Tip = ({ protectedPage, post, slug }) => {
         >
           <Post post={postState} />
         </ConditionalWrapper>
-      </Page>
+     </Page>
     </>
   )
 }

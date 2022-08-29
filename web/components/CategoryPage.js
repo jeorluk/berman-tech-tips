@@ -69,7 +69,8 @@ const CategoryPage = ({ category, posts }) => {
       >
         <Link href='/'>
           <a>Home</a>
-        </Link>{' '}
+        </Link>  
+        {` > `}
          {category.title}
       </p>
       <ul>
