@@ -68,7 +68,7 @@ const CardStyles = styled.div`
 `
 
 const CategoryCard = ({ posts, category }) => {
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   const MAX_CARD_ITEMS = 10
   return (
     <CardStyles>
@@ -86,9 +86,7 @@ const CategoryCard = ({ posts, category }) => {
       <ul>
         {posts.slice(0, MAX_CARD_ITEMS).map((post) => (
           <li key={post._id}>
-            <Link href={`/tips/${post.slug.current}`}>
-              <a>{post.title}</a>
-            </Link>
+            <Link href={`/tips/${post.slug.current}`}>{post.title}</Link>
             {!session && post.protectedPage && (
               <span>
                 <div className='lock'>
@@ -105,9 +103,7 @@ const CategoryCard = ({ posts, category }) => {
               href='/categories/[slug]'
               as={`/categories/${category.slug.current}`}
             >
-              <a>
-                <strong>See more...</strong>
-              </a>
+              <strong>See more...</strong>
             </Link>
           </li>
         )}

@@ -1,9 +1,11 @@
 const nodemailer = require('nodemailer')
 
-import { getSession } from 'next-auth/react'
-
+import { authOptions } from '../api/auth/[...nextauth]'
+// import { getSession } from 'next-auth/react'
+import { getServerSession } from 'next-auth/next'
 const sendAnEmail = async (req, res) => {
-  const session = await getSession({ req })
+  // const session = await getSession({ req })
+  const session = await getServerSession(req, res, authOptions)
   if (session) {
     // Signed in
     const data = JSON.parse(req.body)

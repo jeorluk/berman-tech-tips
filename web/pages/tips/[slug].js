@@ -34,7 +34,7 @@ const ConditionalWrapper = ({ condition, wrapper, children }) =>
 const Tip = ({ protectedPage, post, slug }) => {
   //Initialize state from props
   const [postState, setPostState] = useState(post)
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const Tip = ({ protectedPage, post, slug }) => {
         const { protectedPage, ...protectedPost } = await pageQuery(slug)
         setPostState(protectedPost)
       }
-      fetchData().catch(console.log(error))
+      fetchData().catch((error) => console.log(error))
     } else {
       setPostState(post)
     }
@@ -66,9 +66,7 @@ const Tip = ({ protectedPage, post, slug }) => {
             fontWeight: 'bold',
           }}
         >
-          <Link href='/'>
-            <a>Home</a>
-          </Link>
+          <Link href='/'>Home</Link>
           {` > `}
           {post.categories && (
             <>
@@ -76,7 +74,7 @@ const Tip = ({ protectedPage, post, slug }) => {
                 href='/categories/[slug]'
                 as={`/categories/${post.categories[0].slug.current}`}
               >
-                <a>{post.categories[0].title}</a>
+                {post.categories[0].title}
               </Link>
               {` > `}
             </>
@@ -92,7 +90,7 @@ const Tip = ({ protectedPage, post, slug }) => {
         >
           <Post post={postState} />
         </ConditionalWrapper>
-     </Page>
+      </Page>
     </>
   )
 }

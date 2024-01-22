@@ -76,14 +76,13 @@ const options = {
     }),
   ],
   callbacks: {
-   async signIn ({user, account, profile}) {
+    async signIn({ user, account, profile }) {
       if (
         account.provider === 'google' &&
         profile.email_verified === true &&
         profile.email.endsWith('@mjbha.org') &&
-        await isUserStaff(profile.email)
+        (await isUserStaff(profile.email))
       ) {
-      
         return Promise.resolve(true)
       } else {
         return Promise.resolve(false)

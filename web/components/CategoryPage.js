@@ -50,7 +50,7 @@ const CategoryPageStyles = styled.div`
   }
 `
 const CategoryPage = ({ category, posts }) => {
-  const {data: session} = useSession()
+  const { data: session } = useSession()
   return (
     <CategoryPageStyles>
       <div className='title-bar'>
@@ -67,18 +67,14 @@ const CategoryPage = ({ category, posts }) => {
           fontWeight: 'bold',
         }}
       >
-        <Link href='/'>
-          <a>Home</a>
-        </Link>  
+        <Link href='/'>Home</Link>
         {` > `}
-         {category.title}
+        {category.title}
       </p>
       <ul>
         {posts.map((post) => (
           <li key={post._id}>
-            <Link href={`/tips/${post.slug.current}`}>
-              <a>{post.title}</a>
-            </Link>
+            <Link href={`/tips/${post.slug.current}`}>{post.title}</Link>
             {!session && post.protectedPage && (
               <span>
                 <div className='lock'>
