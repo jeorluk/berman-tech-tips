@@ -2,25 +2,25 @@ import { useSession, signIn } from 'next-auth/react'
 import React from 'react'
 import styled from 'styled-components'
 import Button from '../styles/Button'
-const LoginGateStyles = styled.div`
+const LoginGateStylesOld = styled.div`
   width: 100vw;
+  max-height: 500px;
   max-width: 500px;
   margin: auto;
 
-  clip-path: url(#splat);
-  -webkit-clip-path: url(#splat);
+  /* clip-path: url(#splat); */
+  /* -webkit-clip-path: url(#splat); */
 
   background: var(--main-dark);
   color: var(--text-light);
 
-  /* max-width: 700px; */
-  /* width: 100%; */
   display: flex;
   align-items: center;
-  /* justify-items: center; */
 
+  /* clip-path: url(#splat); */
+  /* -webkit-clip-path: url(#splat); */
   #content {
-    /* border: 2px solid yellow; */
+    border: 2px solid yellow;
     width: 100%;
     height: 100%;
     display: flex;
@@ -55,8 +55,45 @@ const LoginGateStyles = styled.div`
     position: absolute;
   }
 `
+const LoginGateStyles = styled.div`
+  background: var(--main-dark);
+  color: var(--text-light);
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+  margin: 10px auto;
+  width: 100vw;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  #content {
+    max-width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  svg {
+    height: 0;
+    width: 0;
+    position: absolute;
+  }
+`
 const LoginGate = ({ message = "do what you're trying to do", children }) => {
-  const {data: session} = useSession()
+  const { data: session } = useSession()
 
   function handleSignin(e) {
     e.preventDefault()
